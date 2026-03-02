@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Environment (do not commit credentials)
+.env
+.env.local
+.env.*.local
+
+# Logs and OS
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build / cache
+dist/
+build/
+.next/
+.cache/
+
+# Uploads (optional - remove if you want to track uploads)
+# backend/uploads/
+>>>>>>> 0dfb8e949cf01cd1443a50168901fe6ccd92443a

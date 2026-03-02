@@ -1,0 +1,255 @@
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .p-rent-container
+        {
+            background-color: #f5f9f8;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .pr-rent-equipment-wrapper
+        {
+            display: flex;
+            width: 100%;
+        }
+
+       
+        /* Main Content Styles */
+        .pr-rent-main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 30px;
+        }
+
+        .pr-rent-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .pr-rent-page-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #00474f;
+        }
+
+        .pr-rent-breadcrumb {
+            display: flex;
+            align-items: center;
+            color: #46aca4;
+        }
+
+        .pr-rent-breadcrumb a {
+            color: #46aca4;
+            text-decoration: none;
+        }
+
+        .pr-rent-breadcrumb i {
+            margin: 0 10px;
+            font-size: 12px;
+        }
+
+        .pr-rent-rental-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .pr-rent-equipment-card {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            margin: 0px 5px;
+        }
+
+        .pr-rent-equipment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pr-rent-equipment-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .pr-rent-equipment-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .pr-rent-equipment-card:hover .pr-rent-equipment-image img {
+            transform: scale(1.05);
+        }
+
+        .pr-rent-equipment-details {
+            padding: 20px;
+        }
+
+        .pr-rent-equipment-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: #00474f;
+            margin-bottom: 10px;
+        }
+
+        .pr-rent-equipment-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .pr-rent-equipment-specs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .pr-rent-spec {
+            text-align: center;
+        }
+
+        .pr-rent-spec-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #00c9b1;
+        }
+
+        .pr-rent-spec-label {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .pr-rent-rental-form {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 0px 5px;
+        }
+
+        .pr-rent-form-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #00474f;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pr-rent-form-group {
+            margin-bottom: 20px;
+        }
+
+        .pr-rent-form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #00474f;
+        }
+
+        .pr-rent-form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .pr-rent-form-input:focus {
+            outline: none;
+            border-color: #00c9b1;
+            box-shadow: 0 0 0 2px rgba(0, 201, 177, 0.2);
+        }
+
+        .pr-rent-time-selection {
+            display: flex;
+            gap: 15px;
+        }
+
+        .pr-rent-time-selection .pr-rent-form-group {
+            flex: 1;
+        }
+
+        .pr-rent-price-summary {
+            background: #f8fdfc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #e6f5f3;
+        }
+
+        .pr-rent-price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .pr-rent-price-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            font-weight: 600;
+            font-size: 18px;
+            color: #00474f;
+        }
+
+        .pr-rent-rent-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #00c9b1, #00a896);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.3s;
+        }
+
+        .pr-rent-rent-button:hover {
+            background: linear-gradient(to right, #00a896, #008b7a);
+            box-shadow: 0 5px 15px rgba(0, 201, 177, 0.3);
+        }
+
+        @media (max-width: 1024px) {
+            .pr-rent-rental-container {
+                flex-direction: column;
+            }
+            
+            .pr-rent-player-sidebar {
+                width: 80px;
+            }
+            
+            .pr-rent-player-linkText span {
+                display: none;
+            }
+            
+            .pr-rent-main-content {
+                margin-left: 80px;
+            }
+            
+            .pr-rent-player-sidebar-header p:nth-child(1) {
+                font-size: 1.2rem;
+            }
+            
+            .pr-rent-player-sidebar-header p:nth-child(2) {
+                display: none;
+            }
+        }

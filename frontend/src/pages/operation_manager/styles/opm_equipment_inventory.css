@@ -1,0 +1,780 @@
+/* OPM Equipment Inventory - Modern Light Theme */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.opm-ei-container {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    color: #334155;
+}
+
+.opm-ei-main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 2rem;
+    background: transparent;
+}
+
+/* Header Section */
+.opm-ei-content-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.opm-ei-header-text h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.opm-ei-header-text p {
+    color: #64748b;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.opm-ei-header-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Button Styles */
+.opm-ei-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.opm-ei-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.opm-ei-btn:hover::before {
+    left: 100%;
+}
+
+.opm-ei-btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.opm-ei-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.opm-ei-btn-outline {
+    background: white;
+    color: #3b82f6;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.opm-ei-btn-outline:hover {
+    background: #f8fafc;
+    border-color: #3b82f6;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+}
+
+/* Stats Cards */
+.opm-ei-stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.opm-ei-stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.opm-ei-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+}
+
+.opm-ei-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.opm-ei-stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.opm-ei-stat-icon.available {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.opm-ei-stat-icon.unavailable {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.opm-ei-stat-icon.value {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.opm-ei-stat-content {
+    flex: 1;
+}
+
+.opm-ei-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.opm-ei-label {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Filters Section */
+.opm-ei-filters-section {
+    margin-bottom: 2rem;
+}
+
+.opm-ei-filters {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.opm-ei-search-container {
+    flex: 1;
+}
+
+.opm-ei-search-bar {
+    position: relative;
+    max-width: 500px;
+}
+
+.opm-ei-search-bar .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.opm-ei-search-bar input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #f8fafc;
+    color: #334155;
+    transition: all 0.3s ease;
+}
+
+.opm-ei-search-bar input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.opm-ei-filter-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.opm-ei-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 150px;
+}
+
+.opm-ei-filter-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.opm-ei-filter-select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    background: white;
+    color: #334155;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.opm-ei-filter-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.opm-ei-sort-btn,
+.opm-ei-refresh-btn {
+    padding: 0.75rem 1rem;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.opm-ei-sort-btn:hover,
+.opm-ei-refresh-btn:hover {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+/* Main Card */
+.opm-ei-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f1f5f9;
+    overflow: hidden;
+}
+
+.opm-ei-card-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+}
+
+.opm-ei-card-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.opm-ei-results-count {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Table Styles */
+.opm-ei-table-container {
+    overflow-x: auto;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.opm-ei-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+}
+
+.opm-ei-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.opm-ei-table th {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: white;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #475569;
+}
+
+.opm-ei-table-row {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.opm-ei-table-row:hover {
+    background: #f8fafc;
+}
+
+.opm-ei-table td {
+    padding: 1.25rem 1.5rem;
+    vertical-align: middle;
+}
+
+/* Image Cell */
+.opm-ei-image-cell {
+    width: 80px;
+}
+
+.opm-ei-equipment-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+}
+
+.opm-ei-equipment-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Item Details */
+.opm-ei-item-cell {
+    min-width: 200px;
+}
+
+.opm-ei-item-details h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.opm-ei-item-details p {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+/* Serial Number */
+.opm-ei-serial-cell {
+    min-width: 150px;
+}
+
+.opm-ei-serial-number {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.85rem;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Price */
+.opm-ei-price-cell {
+    min-width: 120px;
+}
+
+.opm-ei-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #059669;
+}
+
+.opm-ei-edit-input {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.opm-ei-edit-input .currency-symbol {
+    color: #64748b;
+    font-weight: 600;
+}
+
+.opm-ei-edit-input input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #059669;
+    width: 80px;
+}
+
+/* Quantity */
+.opm-ei-quantity-cell {
+    min-width: 100px;
+}
+
+.opm-ei-quantity {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Status */
+.opm-ei-status-cell {
+    min-width: 140px;
+}
+
+.opm-ei-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    width: fit-content;
+}
+
+.opm-ei-status-available {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.opm-ei-status-unavailable {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.opm-ei-status-icon {
+    font-size: 0.9rem;
+}
+
+.opm-ei-status-select {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: white;
+    color: #334155;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Actions */
+.opm-ei-actions-cell {
+    min-width: 150px;
+}
+
+.opm-ei-action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.opm-ei-edit-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.opm-ei-action-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.opm-ei-edit-btn {
+    background: #dbeafe;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+}
+
+.opm-ei-edit-btn:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.opm-ei-delete-btn {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.opm-ei-delete-btn:hover {
+    background: #ef4444;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.opm-ei-save-btn {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.opm-ei-save-btn:hover {
+    background: #10b981;
+    color: white;
+}
+
+.opm-ei-cancel-btn {
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.opm-ei-cancel-btn:hover {
+    background: #64748b;
+    color: white;
+}
+
+/* Empty State */
+.opm-ei-empty-row {
+    border: none;
+}
+
+.opm-ei-empty-cell {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.opm-ei-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.opm-ei-empty-state .empty-icon {
+    font-size: 3rem;
+    color: #cbd5e1;
+}
+
+.opm-ei-empty-state h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.opm-ei-empty-state p {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* Loading State */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    gap: 1rem;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Authentication Error State */
+.opm-ei-auth-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    padding: 2rem;
+}
+
+.opm-ei-error-content {
+    text-align: center;
+    max-width: 500px;
+    padding: 3rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f1f5f9;
+}
+
+.opm-ei-error-icon {
+    font-size: 4rem;
+    color: #f59e0b;
+    margin-bottom: 1.5rem;
+}
+
+.opm-ei-error-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.opm-ei-error-content p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.opm-ei-error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .opm-ei-stats-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .opm-ei-main-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .opm-ei-main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+    
+    .opm-ei-content-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    .opm-ei-header-actions {
+        justify-content: stretch;
+    }
+    
+    .opm-ei-btn {
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .opm-ei-stats-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .opm-ei-filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .opm-ei-filter-group {
+        min-width: auto;
+    }
+    
+    .opm-ei-table-container {
+        max-height: 60vh;
+    }
+    
+    .opm-ei-table {
+        min-width: 800px;
+    }
+}
+
+@media (max-width: 480px) {
+    .opm-ei-header-text h1 {
+        font-size: 2rem;
+    }
+    
+    .opm-ei-stats-cards {
+        gap: 1rem;
+    }
+    
+    .opm-ei-stat-card {
+        padding: 1rem;
+    }
+    
+    .opm-ei-stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+    
+    .opm-ei-value {
+        font-size: 1.5rem;
+    }
+}

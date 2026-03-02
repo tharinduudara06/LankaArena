@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.coach-dashboard-container
+{
+    width: calc(100% - 250px);
+    height: 100vh;
+    margin-left: 250px;
+    padding: 20px;
+    background-color: #002232;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    /* grid-template-rows: repeat(12,1fr); */
+    grid-gap: 30px;
+    overflow-y: hidden;
+    
+}
+
+.coach-dashboard-header
+{
+    padding: 10px;
+    /* border: 1px solid white; */
+    border-bottom: 1px solid rgba(211, 211, 211, 0.164);
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+
+}
+
+.c-head-text
+{
+    grid-column: 1/9;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.c-head-text p
+{
+    font-size: 2rem;
+    font-family: 'poppins',sans-serif;
+    font-weight: bold;
+    color: rgb(205, 255, 250);
+}
+
+.c-header-btns
+{
+    grid-column: 9/-1;
+    display: flex;
+    justify-content: right;
+}
+
+.c-header-btns button
+{
+    margin: 10px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: rgba(0, 0, 0, 0.377) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.c-header-btns button:hover
+{
+    transform: scale(1.1);
+}
+
+
+.c-header-btns button:nth-child(1)
+{
+    background-color: #00404b;
+    border: 1px solid rgb(0, 128, 119);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-header-btns button:nth-child(1) img
+{
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.c-header-btns button:nth-child(2)
+{
+    background-color: #008bae;
+    border: 0;
+    color: white;
+}
+
+.coach-dash-cards
+{
+    padding: 10px;
+    /* border: 1px solid white; */
+    grid-column: 1/-1;
+
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 20px;
+}
+
+.c-dash-card
+{
+    /* border: 1px solid white; */
+    height: 140px;
+    border-radius: 10px;
+    background-color: #003847;
+    border-left: 4px solid #00d8b8;
+    box-shadow: rgba(0, 0, 0, 0.375) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.c-dash-card:hover
+{
+    margin-top: -5px;
+}
+
+.c-dash-card p
+{
+    line-height: 2;
+}
+
+.c-dash-card p:nth-child(1)
+{
+    font-family: 'poppins',sans-serif;
+    font-size: 1rem;
+    color: rgb(0, 148, 171);
+}
+
+.c-dash-card p:nth-child(2)
+{
+    font-size: 1.5rem;
+    font-family: 'poppins',sans-serif;
+    font-weight: bold;
+    color: #b3fffc;
+}
+
+.c-recent-activities
+{
+    padding: 20px;
+    /* border: 1px solid white; */
+    grid-column: 1/9;
+    border-radius: 10px;
+    background-color: #003847;
+    box-shadow: rgba(0, 0, 0, 0.375) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.c-activity-card
+{
+    border-bottom: 1px solid rgba(211, 211, 211, 0.181);
+    padding: 20px;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+}
+
+.c-activity-card-icon
+{
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 184, 181, 0.189);
+    border-radius: 5px;
+}
+
+.c-activity-card-icon img
+{
+    width: 25px;
+    height: 25px;
+}
+
+
+.c-activity-card:hover
+{
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.032),rgba(255, 255, 255, 0.084),rgba(255, 255, 255, 0.026));
+    transform: scale(0.98);
+    border-radius: 10px;
+}
+
+.c-activity-text
+{
+    margin-left: 10px;
+    color: white;
+    /* border: 1px solid white; */
+    /* display: flex; */
+    width: 100%;
+}
+
+.c-activity-text p{
+    font-family: 'poppins',sans-serif;
+}
+
+.c-activity-text p:nth-child(2)
+{
+    font-size: 0.75rem;
+    color: #9d9d9d;
+}
+
+.c-recent-header
+{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.168);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-family: 'poppins', sans-serif;
+    font-weight: bold;
+    color: #dafff6;
+}
+
+.c-quickActions
+{
+    padding: 10px;
+    /* border: 1px solid white; */
+    grid-column: 9/-1;
+    background-color: #003847;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.375) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.c-quickAction-btns
+{
+    padding: 10px;
+}
+
+.c-quickAction-btns button
+{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: none;
+    font-size: 1rem;
+    border: 1px solid #00bdbd;
+    
+    color: white;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 20px;  
+    transition: .3s;
+}
+
+.c-quickAction-btns button:hover
+{
+    background-color:#00bdbd24;
+    border-left: 5px solid #00bdbd;
+}
+
+.c-quickAction-btns button div
+{
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0080874c;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.c-quickAction-btns button img
+{
+    width: 15px;
+    height: 15px;
+    
+}
+
+.c-quickAction-header
+{
+    padding: 10px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.147);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.c-quickAction-header p
+{
+    font-size: 1.4rem;
+    font-family: 'poppins',sans-serif;
+    font-weight: bold;
+    margin-left: 10px;
+    color: rgb(202, 255, 251);
+}
+
+.c-quickAction-header img
+{
+    width: 25px;
+    height: 25px;
+}

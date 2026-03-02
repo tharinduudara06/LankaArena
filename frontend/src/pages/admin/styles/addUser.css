@@ -1,0 +1,166 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.error {
+    border: 1px solid #ff0000 !important;
+    background-color: #ffe6e6;
+}
+
+.error-message {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input.error, select.error {
+    border-color: #ff0000;
+}
+
+.add-user-container
+{
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    padding: 20px;
+    background-color: rgb(0, 34, 50);
+    min-height: 100vh; 
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.add-user-container * {
+    max-width: 100%;
+}
+
+.pageHeader
+{
+    padding: 20px;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(195, 195, 195, 0.341);
+}
+.addUser-main form
+{
+    padding: 20px;
+    background-color: rgb(0, 44, 64);
+    margin-top: 20px;
+    border-radius: 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.role
+{
+    grid-column: 1/-1;
+}
+
+.player
+{
+    grid-column: 1/-1;
+}
+
+.service
+{
+    grid-column: 1/-1;
+}
+
+.form-group input
+{
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    padding: 0px 10px;
+    font-size: 0.9rem;
+    background: none;
+    outline: none;
+    border: 1px solid white;
+    background-color: #ffffff0c;
+    color: #ffffff;
+    border: 1px solid #ccc;
+   
+}
+
+.form-group label
+{
+    color: white;
+}
+
+.form-group select
+{
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    padding: 0px 10px;
+    font-size: 1rem;
+    background: none;
+    outline: none;
+    border: 1px solid white;
+    background-color: #ffffff0c;
+    color: #ffffff;
+    border: 1px solid #ccc;
+    
+}
+
+.form-group input,
+.form-group select
+{
+    margin-top: 6px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border: 1px solid rgb(0, 200, 173); /* brighter blue when focused */
+    background-color: rgba(255, 255, 255, 0.15);
+    outline: none;
+    transition: .2s;
+    box-shadow: rgba(0, 200, 173, 0.147) 0px 4px 12px;
+}
+
+.form-group select option
+{
+    color: black;
+}
+
+.active
+{
+    color: black;
+}
+.ubtn
+{
+    grid-column: 1/-1;
+}
+
+#spTypeField,#playerPositionField
+{
+    display: none;
+}
+
+.ubtn button
+{
+    padding: 15px 25px;
+    float: right;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(0, 200, 173);
+    color: white;
+    font-size: 1rem;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.ubtn button:active
+{
+    transform: scale(0.9);
+}

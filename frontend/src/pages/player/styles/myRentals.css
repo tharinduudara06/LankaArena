@@ -1,0 +1,293 @@
+/* Reset & Globals */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --primary: #0f2f3d;
+  --secondary: #1e4a5f;
+  --accent: #56d6cc;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #17a2b8;
+  --card-bg: #ffffff;
+  --text-primary: #333;
+  --text-secondary: #666;
+}
+
+.p-mr-player-container {
+  display: flex;
+  width: 100%;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+/* Sidebar */
+.p-mr-player-sidebar {
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(rgb(0, 43, 50), rgb(0, 27, 42));
+  position: fixed;
+  overflow-y: auto;
+  user-select: none;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  z-index: 100;
+}
+
+/* Main Content */
+.p-mr-player-main-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 30px;
+}
+
+.p-mr-player-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.p-mr-player-page-title {
+  font-size: 28px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Filter Section */
+.p-mr-player-filter-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.p-mr-player-filter-btn {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.p-mr-new-rental-btn
+{
+    text-decoration: none;
+    background-color: rgb(0, 218, 167);
+    padding: 10px 15px;
+    color: white;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.p-mr-new-rental-btn:hover
+{
+    background-color: rgb(0, 183, 141);
+    transition: .2s;
+}
+
+.p-mr-player-filter-btn.active,
+.p-mr-player-filter-btn:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Rentals Grid */
+.p-mr-player-rentals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.p-mr-player-rental-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.p-mr-player-rental-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.p-mr-player-rental-image {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.p-mr-player-rental-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.p-mr-player-rental-card:hover .p-mr-player-rental-image img {
+  transform: scale(1.05);
+}
+
+/* Status Tags */
+.p-mr-player-rental-status {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.p-mr-player-status-active {
+  background: var(--success);
+  color: white;
+}
+
+.p-mr-player-status-completed {
+  background: var(--info);
+  color: white;
+}
+
+.p-mr-player-status-upcoming {
+  background: var(--warning);
+  color: black;
+}
+
+.p-mr-player-status-cancelled {
+  background: var(--danger);
+  color: white;
+}
+
+/* Card Content */
+.p-mr-player-rental-content {
+  padding: 20px;
+}
+
+.p-mr-player-rental-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.p-mr-player-rental-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.p-mr-player-rental-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Rental Details */
+.p-mr-player-rental-details {
+  margin-bottom: 20px;
+}
+
+.p-mr-player-rental-detail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.p-mr-player-rental-detail i {
+  width: 20px;
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+/* Actions */
+.p-mr-player-rental-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.p-mr-player-action-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.p-mr-player-extend-btn {
+  background: var(--accent);
+  color: white;
+}
+
+.p-mr-player-extend-btn:hover {
+  background: #45b9af;
+}
+
+.p-mr-player-cancel-btn {
+  background: #f8f9fa;
+  color: var(--danger);
+  border: 1px solid #ddd;
+}
+
+.p-mr-player-cancel-btn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .p-mr-player-rentals-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .p-mr-player-rental-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .p-mr-player-main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .p-mr-player-sidebar {
+    width: 70px;
+  }
+
+  .p-mr-player-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .p-mr-player-filter-section {
+    flex-wrap: wrap;
+  }
+
+  .p-mr-player-rental-stats {
+    grid-template-columns: 1fr;
+  }
+}

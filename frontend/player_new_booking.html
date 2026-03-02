@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now - LankaArena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .p-nb-player-sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(rgb(0, 43, 50), rgb(0, 27, 42));
+            position: fixed;
+            overflow-y: auto;
+            user-select: none;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            z-index: 100;
+        }
+
+        .p-nb-player-sidebar-header {
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .p-nb-player-sidebar-header p:nth-child(1) {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #56d6cc;
+        }
+
+        .p-nb-player-sidebar-header p:nth-child(2) {
+            color: #46aca4;
+        }
+
+        .p-nb-player-sidebar-links {
+            padding: 20px 0px;
+            border-bottom: 1px solid rgba(211, 211, 211, 0.242);
+            border-top: 1px solid rgba(211, 211, 211, 0.242);
+        }
+
+        .p-nb-player-linkText {
+            padding: 10px 10px 10px 20px;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            transition: .2s;
+            text-decoration: none;
+        }
+
+        .p-nb-player-linkText:hover {
+            border-left: 5px solid #56d6cc;
+            background-color: #6ffff321;
+            color: #a3fff7;
+        }
+
+        .p-nb-player-link {
+            margin-top: 10px;
+        }
+
+        .p-nb-player-link i {
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .p-nb-player-sidebar-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 20px;
+        }
+
+        .p-nb-player-sidebar-footer p {
+            margin-top: 10px;
+            color: #46aca4d8;
+        }
+
+        .p-nb-player-footer-profile-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 100px;
+        }
+
+        .p-nb-player-footer-profile-icon img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-position: center;
+            background-size: contain;
+            border: 3px solid #a3fff7;
+        }
+
+        .p-nb-player-footer-logout {
+            padding: 20px;
+            background-color: #46aca429;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 0;
+        }
+
+        .p-nb-player-footer-logout:active {
+            transform: scale(0.9);
+        }
+
+        .p-nb-player-footer-logout img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Main Content Styles */
+        .p-nb-main-content {
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+        }
+
+        .p-nb-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .p-nb-page-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #003b52;
+        }
+
+        .p-nb-booking-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .p-nb-ground-info {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            height: fit-content;
+        }
+
+        .p-nb-ground-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .p-nb-ground-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .p-nb-ground-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003b52;
+            margin-bottom: 10px;
+        }
+
+        .p-nb-ground-details {
+            margin-bottom: 20px;
+        }
+
+        .p-nb-detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        .p-nb-detail-item i {
+            margin-right: 10px;
+            color: #00c9b1;
+            width: 20px;
+            text-align: center;
+        }
+
+        .p-nb-price-tag {
+            background: linear-gradient(135deg, #00c9b1, #00a896);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .p-nb-facilities {
+            margin-top: 20px;
+        }
+
+        .p-nb-facilities h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #003b52;
+        }
+
+        .p-nb-facility-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .p-nb-facility-tag {
+            background-color: #e8f8f6;
+            color: #007a6c;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .p-nb-booking-form {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+        }
+
+        .p-nb-form-section {
+            margin-bottom: 25px;
+        }
+
+        .p-nb-form-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #003b52;
+            display: flex;
+            align-items: center;
+        }
+
+        .p-nb-form-section h3 i {
+            margin-right: 10px;
+            color: #00c9b1;
+        }
+
+        .p-nb-form-group {
+            margin-bottom: 20px;
+        }
+
+        .p-nb-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .p-nb-form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .p-nb-form-control:focus {
+            outline: none;
+            border-color: #00c9b1;
+            box-shadow: 0 0 0 2px rgba(0, 201, 177, 0.2);
+        }
+
+        .p-nb-time-inputs {
+            display: flex;
+            gap: 15px;
+        }
+
+        .p-nb-time-inputs .p-nb-form-group {
+            flex: 1;
+        }
+
+        /* Payment Methods with Radio Buttons (Pure CSS) */
+        .p-nb-payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .p-nb-payment-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .p-nb-payment-option:hover {
+            border-color: #00c9b1;
+        }
+
+        .p-nb-payment-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .p-nb-payment-option-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .p-nb-payment-option-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #555;
+            width: 30px;
+            text-align: center;
+        }
+
+        .p-nb-payment-option-label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .p-nb-custom-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        /* Radio button selection using :checked pseudo-class */
+        .p-nb-payment-option input[type="radio"]:checked + .p-nb-payment-option-content .p-nb-custom-radio {
+            border-color: #00c9b1;
+            background-color: #00c9b1;
+        }
+
+        .p-nb-payment-option input[type="radio"]:checked + .p-nb-payment-option-content .p-nb-custom-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .p-nb-payment-option input[type="radio"]:checked + .p-nb-payment-option-content .p-nb-payment-option-icon {
+            color: #00c9b1;
+        }
+
+        .p-nb-payment-option input[type="radio"]:checked + .p-nb-payment-option-content {
+            color: #00c9b1;
+        }
+
+        .p-nb-payment-option input[type="radio"]:checked ~ .p-nb-payment-option {
+            border-color: #00c9b1;
+            background-color: #e8f8f6;
+        }
+
+        .p-nb-price-summary {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .p-nb-price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .p-nb-price-row.total {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            font-weight: 600;
+            font-size: 18px;
+            color: #003b52;
+        }
+
+        .p-nb-btn-book {
+            background: linear-gradient(135deg, #00c9b1, #00a896);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .p-nb-btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 201, 177, 0.3);
+        }
+
+        .p-nb-btn-book:active {
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .p-nb-booking-container {
+                flex-direction: column;
+            }
+            
+            .p-nb-main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 20px;
+            }
+            
+            .p-nb-player-sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .p-nb-time-inputs {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="p-nb-player-sidebar">
+        <div class="p-nb-player-sidebar-header">
+            <p>LankaArena</p>
+            <p>Player</p>
+        </div>
+        
+        <div class="p-nb-player-sidebar-links">
+            <div class="p-nb-player-link">
+                <a href="#" class="p-nb-player-linkText">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+            </div>
+            <div class="p-nb-player-link">
+                <a href="#" class="p-nb-player-linkText">
+                    <i class="fas fa-calendar-check"></i>
+                    My Bookings
+                </a>
+            </div>
+            <div class="p-nb-player-link">
+                <a href="#" class="p-nb-player-linkText">
+                    <i class="fas fa-hockey-puck"></i>
+                    Equipment Rental
+                </a>
+            </div>
+            <div class="p-nb-player-link">
+                <a href="#" class="p-nb-player-linkText">
+                    <i class="fas fa-users"></i>
+                    Team Management
+                </a>
+            </div>
+            <div class="p-nb-player-link">
+                <a href="#" class="p-nb-player-linkText">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    Payment History
+                </a>
+            </div>
+            <div class="p-nb-player-link">
+                <a href="#" class="p-nb-player-linkText">
+                    <i class="fas fa-star"></i>
+                    Reviews & Ratings
+                </a>
+            </div>
+            <div class="p-nb-player-link">
+                <a href="#" class="p-nb-player-linkText">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </div>
+        </div>
+        
+        <div class="p-nb-player-sidebar-footer">
+            <div class="p-nb-player-footer-profile-icon">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Profile">
+            </div>
+            
+            <button class="p-nb-player-footer-logout">
+                <i class="fas fa-right-from-bracket" style="color:#00c9b1"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="p-nb-main-content">
+        <div class="p-nb-page-header">
+            <h1 class="p-nb-page-title">Book Now</h1>
+        </div>
+        
+        <div class="p-nb-booking-container">
+            <!-- Ground Information -->
+            <div class="p-nb-ground-info">
+                <div class="p-nb-ground-image">
+                    <img src="https://images.unsplash.com/photo-1552645265-3b9d3594cfe0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sports Ground">
+                </div>
+                
+                <h2 class="p-nb-ground-name">Colombo Sports Complex</h2>
+                
+                <div class="p-nb-price-tag">$25 / hour</div>
+                
+                <div class="p-nb-ground-details">
+                    <div class="p-nb-detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Galle Road, Colombo 03, Sri Lanka</span>
+                    </div>
+                    <div class="p-nb-detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+94 11 234 5678</span>
+                    </div>
+                    <div class="p-nb-detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Open: 6:00 AM - 10:00 PM</span>
+                    </div>
+                </div>
+                
+                <div class="p-nb-facilities">
+                    <h3>Facilities</h3>
+                    <div class="p-nb-facility-tags">
+                        <span class="p-nb-facility-tag">Floodlights</span>
+                        <span class="p-nb-facility-tag">Changing Rooms</span>
+                        <span class="p-nb-facility-tag">Parking</span>
+                        <span class="p-nb-facility-tag">Water Dispenser</span>
+                        <span class="p-nb-facility-tag">First Aid</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Booking Form -->
+            <div class="p-nb-booking-form">
+                <div class="p-nb-form-section">
+                    <h3><i class="far fa-calendar-alt"></i> Select Date & Time</h3>
+                    
+                    <div class="p-nb-form-group">
+                        <label for="booking-date">Booking Date</label>
+                        <input type="date" id="booking-date" class="p-nb-form-control">
+                    </div>
+                    
+                    <div class="p-nb-time-inputs">
+                        <div class="p-nb-form-group">
+                            <label for="start-time">Start Time</label>
+                            <input type="time" id="start-time" class="p-nb-form-control">
+                        </div>
+                        
+                        <div class="p-nb-form-group">
+                            <label for="end-time">End Time</label>
+                            <input type="time" id="end-time" class="p-nb-form-control">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-nb-form-section">
+                    <h3><i class="far fa-credit-card"></i> Payment Method</h3>
+                    
+                    <div class="p-nb-payment-methods">
+                        <label class="p-nb-payment-option">
+                            <input type="radio" name="payment-method" value="credit-card" checked>
+                            <div class="p-nb-payment-option-content">
+                                <div class="p-nb-custom-radio"></div>
+                                <div class="p-nb-payment-option-icon">
+                                    <i class="fab fa-cc-visa"></i>
+                                </div>
+                                <span class="p-nb-payment-option-label">Credit Card</span>
+                            </div>
+                        </label>
+                        
+                        <label class="p-nb-payment-option">
+                            <input type="radio" name="payment-method" value="paypal">
+                            <div class="p-nb-payment-option-content">
+                                <div class="p-nb-custom-radio"></div>
+                                <div class="p-nb-payment-option-icon">
+                                    <i class="fab fa-cc-paypal"></i>
+                                </div>
+                                <span class="p-nb-payment-option-label">PayPal</span>
+                            </div>
+                        </label>
+                        
+                        <label class="p-nb-payment-option">
+                            <input type="radio" name="payment-method" value="cash">
+                            <div class="p-nb-payment-option-content">
+                                <div class="p-nb-custom-radio"></div>
+                                <div class="p-nb-payment-option-icon">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
+                                <span class="p-nb-payment-option-label">Cash</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="p-nb-form-section">
+                    <h3><i class="fas fa-receipt"></i> Price Summary</h3>
+                    
+                    <div class="p-nb-price-summary">
+                        <div class="p-nb-price-row">
+                            <span>Price per hour</span>
+                            <span>$25.00</span>
+                        </div>
+                        <div class="p-nb-price-row">
+                            <span>Duration</span>
+                            <span>2 hours</span>
+                        </div>
+                        <div class="p-nb-price-row">
+                            <span>Service fee</span>
+                            <span>$2.50</span>
+                        </div>
+                        <div class="p-nb-price-row total">
+                            <span>Total Amount</span>
+                            <span>$52.50</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="p-nb-btn-book">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

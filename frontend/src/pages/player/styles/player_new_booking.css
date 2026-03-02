@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* FORCE RED BACKGROUND TEST */
+
+
+.p-nr-player-container {
+    display: flex !important;
+    width: 100% !important;
+    color: #333 !important;
+    min-height: 100vh !important;
+}
+
+/* Main Content Styles */
+.p-nr-main-content {
+    margin-left: 250px;
+    padding: 30px;
+    width: calc(100% - 250px);
+    background-color: #f5f7fa;
+    min-height: 100vh;
+}
+
+.p-nr-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.p-nr-page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #0a3d42;
+}
+
+.p-nr-search-filter-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.p-nr-search-box {
+    flex: 1;
+    position: relative;
+}
+
+.p-nr-search-box input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.p-nr-search-box input:focus {
+    border-color: #56d6cc;
+    box-shadow: 0 0 0 2px rgba(86, 214, 204, 0.2);
+}
+
+.p-nr-search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.p-nr-filter-dropdown {
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.p-nr-grounds-container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.p-nr-ground-card {
+    background-color: white;
+    border-radius: 15px;
+    /* overflow: hidden; */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.p-nr-ground-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.p-nr-ground-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.p-nr-ground-details {
+    padding: 20px;
+}
+
+.p-nr-ground-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #0a3d42;
+}
+
+.p-nr-ground-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.p-nr-ground-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #56d6cc;
+}
+
+.p-nr-ground-address {
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+}
+
+.p-nr-ground-phone {
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.p-nr-facilities {
+    margin-bottom: 20px;
+}
+
+.p-nr-facilities-title {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.p-nr-facilities-list {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(4,1fr); 
+}
+
+.p-nr-facility-tag {
+    background-color: #e8f8f7;
+    color: #128792;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.p-nr-book-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #56d6cc, #46aca4);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.p-nr-book-button:hover {
+    background: linear-gradient(to right, #46aca4, #3a8d86);
+    box-shadow: 0 4px 10px rgba(86, 214, 204, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .p-nr-grounds-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .p-nr-player-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .p-nr-main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .p-nr-search-filter-container {
+        flex-direction: column;
+    }
+}

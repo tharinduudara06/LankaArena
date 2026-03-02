@@ -1,0 +1,67 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.coach-nav-container
+{
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(rgb(0, 43, 50),rgb(0, 27, 42));
+    position: fixed;
+    overflow-y: auto;
+    user-select: none;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.footer-profile-pic
+{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 40px;
+    box-shadow: #56d6cb89 0px 5px 10px, #56d6cb2e 0px 10px 10px;
+}
+
+.footer-profile-pic img
+{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 3px solid #56d6cc;
+}
+
+.coach-sidebar-footer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    /* border: 1px solid white; */
+}
+
+.coach-sidebar-footer button
+{
+    margin-left: 40px;
+    background-color: rgba(0, 255, 213, 0.221);
+    border: 0;
+    padding: 7px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+.coach-sidebar-footer button:active
+{
+    transform: scale(0.9);
+    transition: 0.1s;
+}

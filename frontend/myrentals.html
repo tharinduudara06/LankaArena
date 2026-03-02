@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Rentals - LankaArena</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #0f2f3d;
+            --secondary: #1e4a5f;
+            --accent: #56d6cc;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --card-bg: #ffffff;
+            --text-primary: #333;
+            --text-secondary: #666;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+            min-height: 100vh;
+            display: flex;
+            color: var(--text-primary);
+        }
+
+        /* Sidebar Styles (from your code) */
+        .p-mr-player-sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(rgb(0, 43, 50), rgb(0, 27, 42));
+            position: fixed;
+            overflow-y: auto;
+            user-select: none;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            z-index: 100;
+        }
+
+        /* Main Content Area */
+        .p-mr-player-main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 30px;
+        }
+
+        .p-mr-player-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .p-mr-player-page-title {
+            font-size: 28px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .p-mr-player-filter-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .p-mr-player-filter-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .p-mr-player-filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .p-mr-player-filter-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Rentals Grid */
+        .p-mr-player-rentals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .p-mr-player-rental-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .p-mr-player-rental-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .p-mr-player-rental-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .p-mr-player-rental-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .p-mr-player-rental-card:hover .p-mr-player-rental-image img {
+            transform: scale(1.05);
+        }
+
+        .p-mr-player-rental-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .p-mr-player-status-active {
+            background: var(--success);
+            color: white;
+        }
+
+        .p-mr-player-status-completed {
+            background: var(--info);
+            color: white;
+        }
+
+        .p-mr-player-status-upcoming {
+            background: var(--warning);
+            color: black;
+        }
+
+        .p-mr-player-rental-content {
+            padding: 20px;
+        }
+
+        .p-mr-player-rental-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .p-mr-player-rental-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .p-mr-player-rental-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .p-mr-player-rental-details {
+            margin-bottom: 20px;
+        }
+
+        .p-mr-player-rental-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .p-mr-player-rental-detail i {
+            width: 20px;
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .p-mr-player-rental-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .p-mr-player-action-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .p-mr-player-extend-btn {
+            background: var(--accent);
+            color: white;
+        }
+
+        .p-mr-player-extend-btn:hover {
+            background: #45b9af;
+        }
+
+        .p-mr-player-cancel-btn {
+            background: #f8f9fa;
+            color: var(--danger);
+            border: 1px solid #ddd;
+        }
+
+        .p-mr-player-cancel-btn:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* Rental Stats */
+        .p-mr-player-rental-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .p-mr-player-stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .p-mr-player-stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .p-mr-player-stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(86, 214, 204, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: var(--accent);
+            font-size: 20px;
+        }
+
+        .p-mr-player-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .p-mr-player-stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Empty State */
+        .p-mr-player-empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .p-mr-player-empty-icon {
+            font-size: 60px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .p-mr-player-empty-title {
+            font-size: 24px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .p-mr-player-empty-text {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .p-mr-player-browse-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .p-mr-player-browse-btn:hover {
+            background: #45b9af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .p-mr-player-rentals-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .p-mr-player-rental-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .p-mr-player-main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .p-mr-player-sidebar {
+                width: 70px;
+            }
+            
+            .p-mr-player-page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .p-mr-player-filter-section {
+                flex-wrap: wrap;
+            }
+            
+            .p-mr-player-rental-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="p-mr-player-sidebar">
+        <!-- Your sidebar content here -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="p-mr-player-main-content">
+        <div class="p-mr-player-page-header">
+            <h1 class="p-mr-player-page-title">My Equipment Rentals</h1>
+            <button>+ New rental</button>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="p-mr-player-filter-section">
+            <button class="p-mr-player-filter-btn active">All Rentals</button>
+            <button class="p-mr-player-filter-btn">Active</button>
+            <button class="p-mr-player-filter-btn">Upcoming</button>
+            <button class="p-mr-player-filter-btn">Completed</button>
+        </div>
+
+        <!-- Rentals Grid -->
+        <div class="p-mr-player-rentals-grid">
+            <!-- Rental 1 - Active -->
+            <div class="p-mr-player-rental-card">
+                <div class="p-mr-player-rental-image">
+                    <img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cricket Bat">
+                    <div class="p-mr-player-rental-status p-mr-player-status-active">Active</div>
+                </div>
+                <div class="p-mr-player-rental-content">
+                    <div class="p-mr-player-rental-header">
+                        <div>
+                            <h3 class="p-mr-player-rental-title">Professional Cricket Bat</h3>
+                            <div class="p-mr-player-rental-price">LKR 800 / hour</div>
+                        </div>
+                    </div>
+                    <div class="p-mr-player-rental-details">
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-cube"></i>
+                            <span>Quantity: 1</span>
+                        </div>
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-calendar-day"></i>
+                            <span>Rent Date: March 15, 2024</span>
+                        </div>
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Time: 2:00 PM - 6:00 PM (4 hours)</span>
+                        </div>
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-tag"></i>
+                            <span>Category: Cricket Equipment</span>
+                        </div>
+                    </div>
+                    <div class="p-mr-player-rental-actions">
+                        <button class="p-mr-player-action-btn p-mr-player-extend-btn">
+                            <i class="fas fa-plus"></i> Extend Rental
+                        </button>
+                        <button class="p-mr-player-action-btn p-mr-player-cancel-btn">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rental 2 - Upcoming -->
+            <div class="p-mr-player-rental-card">
+                <div class="p-mr-player-rental-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tennis Racket">
+                    <div class="p-mr-player-rental-status p-mr-player-status-upcoming">Upcoming</div>
+                </div>
+                <div class="p-mr-player-rental-content">
+                    <div class="p-mr-player-rental-header">
+                        <div>
+                            <h3 class="p-mr-player-rental-title">Tennis Racket Pro</h3>
+                            <div class="p-mr-player-rental-price">LKR 600 / hour</div>
+                        </div>
+                    </div>
+                    <div class="p-mr-player-rental-details">
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-cube"></i>
+                            <span>Quantity: 2</span>
+                        </div>
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-calendar-day"></i>
+                            <span>Rent Date: March 18, 2024</span>
+                        </div>
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Time: 9:00 AM - 11:00 AM (2 hours)</span>
+                        </div>
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-tag"></i>
+                            <span>Category: Tennis Equipment</span>
+                        </div>
+                    </div>
+                    <div class="p-mr-player-rental-actions">
+                        <button class="p-mr-player-action-btn p-mr-player-extend-btn">
+                            <i class="fas fa-edit"></i> Modify
+                        </button>
+                        <button class="p-mr-player-action-btn p-mr-player-cancel-btn">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rental 3 - Completed -->
+            <div class="p-mr-player-rental-card">
+                <div class="p-mr-player-rental-image">
+                    <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Football">
+                    <div class="p-mr-player-rental-status p-mr-player-status-completed">Completed</div>
+                </div>
+                <div class="p-mr-player-rental-content">
+                    <div class="p-mr-player-rental-header">
+                        <div>
+                            <h3 class="p-mr-player-rental-title">Professional Football</h3>
+                            <div class="p-mr-player-rental-price">LKR 400 / hour</div>
+                        </div>
+                    </div>
+                    <div class="p-mr-player-rental-details">
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-cube"></i>
+                            <span>Quantity: 3</span>
+                        </div>
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-calendar-day"></i>
+                            <span>Rent Date: March 10, 2024</span>
+                        </div>
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Time: 4:00 PM - 7:00 PM (3 hours)</span>
+                        </div>
+                        <div class="p-mr-player-rental-detail">
+                            <i class="fas fa-tag"></i>
+                            <span>Category: Football Equipment</span>
+                        </div>
+                    </div>
+                    <div class="p-mr-player-rental-actions">
+                        <button class="p-mr-player-action-btn p-mr-player-extend-btn" style="flex: 1;">
+                            <i class="fas fa-redo"></i> Rent Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Rental - LankaArena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+  
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="pr-rent-player-sidebar">
+        <div class="pr-rent-player-sidebar-header">
+            <p>LankaArena</p>
+            <p>Player</p>
+        </div>
+        
+        <div class="pr-rent-player-sidebar-links">
+            <div class="pr-rent-player-link">
+                <a href="#" class="pr-rent-player-linkText">
+                    <div class="pr-rent-icon-placeholder">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+            <div class="pr-rent-player-link">
+                <a href="#" class="pr-rent-player-linkText">
+                    <div class="pr-rent-icon-placeholder">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <span>My Bookings</span>
+                </a>
+            </div>
+            <div class="pr-rent-player-link">
+                <a href="#" class="pr-rent-player-linkText" style="border-left: 5px solid #56d6cc; background-color: #6ffff321; color: #a3fff7;">
+                    <div class="pr-rent-icon-placeholder">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <span>Equipment Rental</span>
+                </a>
+            </div>
+            <div class="pr-rent-player-link">
+                <a href="#" class="pr-rent-player-linkText">
+                    <div class="pr-rent-icon-placeholder">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span>Team Management</span>
+                </a>
+            </div>
+            <div class="pr-rent-player-link">
+                <a href="#" class="pr-rent-player-linkText">
+                    <div class="pr-rent-icon-placeholder">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span>Payment History</span>
+                </a>
+            </div>
+            <div class="pr-rent-player-link">
+                <a href="#" class="pr-rent-player-linkText">
+                    <div class="pr-rent-icon-placeholder">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span>Reviews & Ratings</span>
+                </a>
+            </div>
+            <div class="pr-rent-player-link">
+                <a href="#" class="pr-rent-player-linkText">
+                    <div class="pr-rent-icon-placeholder">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="pr-rent-player-sidebar-footer">
+            <div class="pr-rent-player-footer-profile-icon">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Profile">
+            </div>
+            
+            <button class="pr-rent-player-footer-logout">
+                <i class="fas fa-right-from-bracket"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="pr-rent-main-content">
+        <div class="pr-rent-page-header">
+            <h1 class="pr-rent-page-title">Equipment Rental</h1>
+            <div class="pr-rent-breadcrumb">
+                <a href="#">Dashboard</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Equipment Rental</span>
+            </div>
+        </div>
+
+        <div class="pr-rent-rental-container">
+            <!-- Equipment Card -->
+            <div class="pr-rent-equipment-card">
+                <div class="pr-rent-equipment-image">
+                    <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Basketball">
+                </div>
+                <div class="pr-rent-equipment-details">
+                    <h2 class="pr-rent-equipment-name">Professional Basketball</h2>
+                    <p class="pr-rent-equipment-description">Official size 7 basketball with premium grip and durability. Perfect for indoor and outdoor courts.</p>
+                    
+                    <div class="pr-rent-equipment-specs">
+                        <div class="pr-rent-spec">
+                            <div class="pr-rent-spec-value">$5</div>
+                            <div class="pr-rent-spec-label">Per Hour</div>
+                        </div>
+                        <div class="pr-rent-spec">
+                            <div class="pr-rent-spec-value">12</div>
+                            <div class="pr-rent-spec-label">Available</div>
+                        </div>
+                        <div class="pr-rent-spec">
+                            <div class="pr-rent-spec-value">Size 7</div>
+                            <div class="pr-rent-spec-label">Standard</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pr-rent-price-summary">
+                        <div class="pr-rent-price-row">
+                            <span>Base Rate:</span>
+                            <span>$5.00/hr</span>
+                        </div>
+                        <div class="pr-rent-price-row">
+                            <span>Security Deposit:</span>
+                            <span>$20.00</span>
+                        </div>
+                        <div class="pr-rent-price-row">
+                            <span>Insurance:</span>
+                            <span>$2.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rental Form -->
+            <div class="pr-rent-rental-form">
+                <h2 class="pr-rent-form-title">Rental Details</h2>
+                
+                <div class="pr-rent-form-group">
+                    <label class="pr-rent-form-label">Quantity</label>
+                    <select class="pr-rent-form-input">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                
+                <div class="pr-rent-form-group">
+                    <label class="pr-rent-form-label">Rental Date</label>
+                    <input type="date" class="pr-rent-form-input">
+                </div>
+                
+                <div class="pr-rent-time-selection">
+                    <div class="pr-rent-form-group">
+                        <label class="pr-rent-form-label">From</label>
+                        <input type="time" class="pr-rent-form-input" value="10:00">
+                    </div>
+                    
+                    <div class="pr-rent-form-group">
+                        <label class="pr-rent-form-label">To</label>
+                        <input type="time" class="pr-rent-form-input" value="12:00">
+                    </div>
+                </div>
+                
+                <div class="pr-rent-form-group">
+                    <label class="pr-rent-form-label">Special Requests (Optional)</label>
+                    <textarea class="pr-rent-form-input" rows="3" placeholder="Any special instructions or requests..."></textarea>
+                </div>
+                
+                <div class="pr-rent-price-summary">
+                    <h3 style="margin-bottom: 15px; color: #00474f;">Rental Summary</h3>
+                    
+                    <div class="pr-rent-price-row">
+                        <span>2 hours x $5.00:</span>
+                        <span>$10.00</span>
+                    </div>
+                    <div class="pr-rent-price-row">
+                        <span>Insurance:</span>
+                        <span>$2.00</span>
+                    </div>
+                    <div class="pr-rent-price-row">
+                        <span>Tax (10%):</span>
+                        <span>$1.20</span>
+                    </div>
+                    
+                    <div class="pr-rent-price-total">
+                        <span>Total:</span>
+                        <span>$13.20</span>
+                    </div>
+                </div>
+                
+                <button class="pr-rent-rent-button">Rent Now</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

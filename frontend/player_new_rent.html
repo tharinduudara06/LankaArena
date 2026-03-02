@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LankaArena - New Booking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .p-nr-player-sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(rgb(0, 43, 50), rgb(0, 27, 42));
+            position: fixed;
+            overflow-y: auto;
+            user-select: none;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            font-family: 'Poppins', sans-serif;
+            z-index: 100;
+        }
+
+        .p-nr-player-sidebar-header {
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .p-nr-player-sidebar-header p:nth-child(1) {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #56d6cc;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .p-nr-player-sidebar-header p:nth-child(2) {
+            color: #46aca4;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .p-nr-player-sidebar-links {
+            padding: 20px 0px;
+            border-bottom: 1px solid rgba(211, 211, 211, 0.242);
+            border-top: 1px solid rgba(211, 211, 211, 0.242);
+        }
+
+        .p-nr-player-linkText {
+            padding: 10px 10px 10px 20px;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            transition: .2s;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .p-nr-player-linkText:hover {
+            border-left: 5px solid #56d6cc;
+            background-color: #6ffff321;
+            color: #a3fff7;
+        }
+
+        .p-nr-player-link {
+            margin-top: 10px;
+        }
+
+        .p-nr-player-link img {
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+        }
+
+        .p-nr-player-sidebar-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 20px;
+        }
+
+        .p-nr-player-sidebar-footer p {
+            margin-top: 10px;
+            color: #46aca4d8;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .p-nr-player-footer-profile-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 100px;
+        }
+
+        .p-nr-player-footer-profile-icon img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-position: center;
+            background-size: contain;
+            border: 3px solid #a3fff7;
+        }
+
+        .p-nr-player-footer-logout {
+            padding: 20px;
+            background-color: #46aca429;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 0;
+            color: #00c9b1;
+            font-size: 1.2rem;
+        }
+
+        .p-nr-player-footer-logout:active {
+            transform: scale(0.9);
+        }
+
+        .p-nr-player-footer-logout img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .p-nr-icon-placeholder {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        /* Main Content Styles */
+        .p-nr-main-content {
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+        }
+
+        .p-nr-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .p-nr-page-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0a3d42;
+        }
+
+        .p-nr-search-filter-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .p-nr-search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .p-nr-search-box input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .p-nr-search-box input:focus {
+            border-color: #56d6cc;
+            box-shadow: 0 0 0 2px rgba(86, 214, 204, 0.2);
+        }
+
+        .p-nr-search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+
+        .p-nr-filter-dropdown {
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .p-nr-grounds-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .p-nr-ground-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .p-nr-ground-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .p-nr-ground-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .p-nr-ground-details {
+            padding: 20px;
+        }
+
+        .p-nr-ground-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0a3d42;
+        }
+
+        .p-nr-ground-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .p-nr-ground-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #56d6cc;
+        }
+
+        .p-nr-ground-address {
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .p-nr-ground-phone {
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .p-nr-facilities {
+            margin-bottom: 20px;
+        }
+
+        .p-nr-facilities-title {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .p-nr-facilities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .p-nr-facility-tag {
+            background-color: #e8f8f7;
+            color: #0a3d42;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .p-nr-book-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #56d6cc, #46aca4);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .p-nr-book-button:hover {
+            background: linear-gradient(to right, #46aca4, #3a8d86);
+            box-shadow: 0 4px 10px rgba(86, 214, 204, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .p-nr-grounds-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .p-nr-player-sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .p-nr-main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .p-nr-search-filter-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="p-nr-player-sidebar">
+        <div class="p-nr-player-sidebar-header">
+            <p>LankaArena</p>
+            <p>Player</p>
+        </div>
+        
+        <div class="p-nr-player-sidebar-links">
+            <div class="p-nr-player-link">
+                <a href="#" class="p-nr-player-linkText">
+                    <div class="p-nr-icon-placeholder">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    Dashboard
+                </a>
+            </div>
+            <div class="p-nr-player-link">
+                <a href="#" class="p-nr-player-linkText" style="border-left: 5px solid #56d6cc; background-color: #6ffff321; color: #a3fff7;">
+                    <div class="p-nr-icon-placeholder">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    My Bookings
+                </a>
+            </div>
+            <div class="p-nr-player-link">
+                <a href="#" class="p-nr-player-linkText">
+                    <div class="p-nr-icon-placeholder">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    Equipment Rental
+                </a>
+            </div>
+            <div class="p-nr-player-link">
+                <a href="#" class="p-nr-player-linkText">
+                    <div class="p-nr-icon-placeholder">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    Team Management
+                </a>
+            </div>
+            <div class="p-nr-player-link">
+                <a href="#" class="p-nr-player-linkText">
+                    <div class="p-nr-icon-placeholder">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    Payment History
+                </a>
+            </div>
+            <div class="p-nr-player-link">
+                <a href="#" class="p-nr-player-linkText">
+                    <div class="p-nr-icon-placeholder">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    Reviews & Ratings
+                </a>
+            </div>
+            <div class="p-nr-player-link">
+                <a href="#" class="p-nr-player-linkText">
+                    <div class="p-nr-icon-placeholder">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    Settings
+                </a>
+            </div>
+        </div>
+        
+        <div class="p-nr-player-sidebar-footer">
+            <div class="p-nr-player-footer-profile-icon">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Profile">
+            </div>
+            
+            <button class="p-nr-player-footer-logout">
+                <i class="fas fa-right-from-bracket"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="p-nr-main-content">
+        <div class="p-nr-page-header">
+            <h1 class="p-nr-page-title">Available Grounds</h1>
+        </div>
+        
+        <div class="p-nr-search-filter-container">
+            <div class="p-nr-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search grounds by name or location...">
+            </div>
+            <div class="p-nr-filter-dropdown">
+                <i class="fas fa-filter"></i>
+                <span>Filter by</span>
+            </div>
+        </div>
+        
+        <div class="p-nr-grounds-container">
+            <!-- Ground Cards -->
+            <div class="p-nr-ground-card">
+                <img src="https://images.unsplash.com/photo-1552645265-3b9d3599c196?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Colombo Sports Ground" class="p-nr-ground-image">
+                <div class="p-nr-ground-details">
+                    <h3 class="p-nr-ground-name">Colombo Sports Ground</h3>
+                    <div class="p-nr-ground-info">
+                        <div class="p-nr-ground-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Galle Road, Colombo 03</span>
+                        </div>
+                        <div class="p-nr-ground-price">$25/hr</div>
+                    </div>
+                    <div class="p-nr-ground-phone">
+                        <i class="fas fa-phone"></i>
+                        <span>+94 11 234 5678</span>
+                    </div>
+                    <div class="p-nr-facilities">
+                        <div class="p-nr-facilities-title">Facilities:</div>
+                        <div class="p-nr-facilities-list">
+                            <span class="p-nr-facility-tag">Floodlights</span>
+                            <span class="p-nr-facility-tag">Changing Rooms</span>
+                            <span class="p-nr-facility-tag">Parking</span>
+                            <span class="p-nr-facility-tag">Cafeteria</span>
+                        </div>
+                    </div>
+                    <button class="p-nr-book-button">Book Now</button>
+                </div>
+            </div>
+            <!-- Repeat other ground cards similarly with updated classes -->
+        </div>
+    </div>
+</body>
+</html>

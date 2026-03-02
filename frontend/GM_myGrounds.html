@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Grounds - LankaArena</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #0f2f3d;
+            --secondary: #1e4a5f;
+            --accent: #56d6cc;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+        }
+
+        body {
+            background-color: #f5f7f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gm-mg-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles (from your code) */
+        .gm-mg-nav-container {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(rgb(0, 43, 50), rgb(0, 27, 42));
+            position: fixed;
+            overflow-y: auto;
+            user-select: none;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            z-index: 100;
+        }
+
+        /* Main Content Area */
+        .gm-mg-main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 30px;
+        }
+
+        .gm-mg-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .gm-mg-page-title {
+            font-size: 28px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .gm-mg-add-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(86, 214, 204, 0.3);
+        }
+
+        .gm-mg-add-btn:hover {
+            background: #45b9af;
+            transform: translateY(-2px);
+        }
+
+        /* Grounds Grid */
+        .gm-mg-grounds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .gm-mg-ground-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gm-mg-ground-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .gm-mg-card-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gm-mg-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gm-mg-ground-card:hover .gm-mg-card-img img {
+            transform: scale(1.05);
+        }
+
+        .gm-mg-card-price {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .gm-mg-card-content {
+            padding: 20px;
+        }
+
+        .gm-mg-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .gm-mg-card-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .gm-mg-card-facilities {
+            margin-bottom: 20px;
+        }
+
+        .gm-mg-facility-tag {
+            display: inline-block;
+            background: #e8f4f3;
+            color: var(--secondary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .gm-mg-card-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gm-mg-action-btn {
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .gm-mg-edit-btn {
+            background: var(--info);
+            color: white;
+        }
+
+        .gm-mg-edit-btn:hover {
+            background: #138496;
+        }
+
+        .gm-mg-delete-btn {
+            background: var(--danger);
+            color: white;
+        }
+
+        .gm-mg-delete-btn:hover {
+            background: #bd2130;
+        }
+
+        /* Forms */
+        .gm-mg-form-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .gm-mg-form-title {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .gm-mg-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gm-mg-form-group {
+            margin-bottom: 20px;
+        }
+
+        .gm-mg-form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .gm-mg-form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .gm-mg-form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .gm-mg-form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(86, 214, 204, 0.2);
+        }
+
+        .gm-mg-form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .gm-mg-form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gm-mg-cancel-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .gm-mg-cancel-btn:hover {
+            background: #5a6268;
+        }
+
+        .gm-mg-submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .gm-mg-submit-btn:hover {
+            background: #45b9af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .gm-mg-grounds-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .gm-mg-form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gm-mg-main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .gm-mg-nav-container {
+                width: 70px;
+            }
+            
+            .gm-mg-page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .gm-mg-grounds-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gm-mg-container">
+        <!-- Sidebar (from your code) -->
+        <div class="gm-mg-nav-container">
+            <!-- Your sidebar content here -->
+        </div>
+
+        <!-- Main Content -->
+        <div class="gm-mg-main-content">
+            <div class="gm-mg-page-header">
+                <h1 class="gm-mg-page-title">My Grounds</h1>
+                <button class="gm-mg-add-btn" id="showAddForm">
+                    <i class="fas fa-plus"></i> Add New Ground
+                </button>
+            </div>
+
+            <!-- Add Ground Form -->
+            <div class="gm-mg-form-container" id="addForm">
+                <h2 class="gm-mg-form-title">Add New Ground</h2>
+                <form>
+                    <div class="gm-mg-form-grid">
+                        <div class="gm-mg-form-group">
+                            <label class="gm-mg-form-label">Ground Name</label>
+                            <input type="text" class="gm-mg-form-input" placeholder="Enter ground name">
+                        </div>
+                        <div class="gm-mg-form-group">
+                            <label class="gm-mg-form-label">Price per Hour (LKR)</label>
+                            <input type="number" class="gm-mg-form-input" placeholder="Enter price">
+                        </div>
+                        <div class="gm-mg-form-group">
+                            <label class="gm-mg-form-label">Address</label>
+                            <input type="text" class="gm-mg-form-input" placeholder="Enter address">
+                        </div>
+                        <div class="gm-mg-form-group">
+                            <label class="gm-mg-form-label">City</label>
+                            <input type="text" class="gm-mg-form-input" placeholder="Enter city">
+                        </div>
+                        <div class="gm-mg-form-group full-width">
+                            <label class="gm-mg-form-label">Facilities (comma separated)</label>
+                            <input type="text" class="gm-mg-form-input" placeholder="e.g., Changing rooms, Floodlights, Seating">
+                        </div>
+                        <div class="gm-mg-form-group full-width">
+                            <label class="gm-mg-form-label">Ground Photo</label>
+                            <input type="file" class="gm-mg-form-input">
+                        </div>
+                    </div>
+                    <div class="gm-mg-form-actions">
+                        <button type="button" class="gm-mg-cancel-btn" id="cancelAdd">Cancel</button>
+                        <button type="submit" class="gm-mg-submit-btn">Add Ground</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Update Ground Form -->
+            <div class="gm-mg-form-container" id="updateForm">
+                <h2 class="gm-mg-form-title">Update Ground Details</h2>
+                <form>
+                    <div class="gm-mg-form-grid">
+                        <div class="gm-mg-form-group">
+                            <label class="gm-mg-form-label">Ground Name</label>
+                            <input type="text" class="gm-mg-form-input" value="City Sports Complex">
+                        </div>
+                        <div class="gm-mg-form-group">
+                            <label class="gm-mg-form-label">Price per Hour (LKR)</label>
+                            <input type="number" class="gm-mg-form-input" value="4500">
+                        </div>
+                        <div class="gm-mg-form-group">
+                            <label class="gm-mg-form-label">Address</label>
+                            <input type="text" class="gm-mg-form-input" value="123 Sports Street">
+                        </div>
+                        <div class="gm-mg-form-group">
+                            <label class="gm-mg-form-label">City</label>
+                            <input type="text" class="gm-mg-form-input" value="Colombo">
+                        </div>
+                        <div class="gm-mg-form-group full-width">
+                            <label class="gm-mg-form-label">Facilities (comma separated)</label>
+                            <input type="text" class="gm-mg-form-input" value="Floodlights, Changing rooms, Seating, Scoreboard">
+                        </div>
+                        <div class="gm-mg-form-group full-width">
+                            <label class="gm-mg-form-label">Update Ground Photo</label>
+                            <input type="file" class="gm-mg-form-input">
+                        </div>
+                    </div>
+                    <div class="gm-mg-form-actions">
+                        <button type="button" class="gm-mg-cancel-btn" id="cancelUpdate">Cancel</button>
+                        <button type="submit" class="gm-mg-submit-btn">Update Ground</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Grounds Listing -->
+            <div class="gm-mg-grounds-grid">
+                <!-- Ground 1 -->
+                <div class="gm-mg-ground-card">
+                    <div class="gm-mg-card-img">
+                        <img src="https://images.unsplash.com/photo-1552667466-07770ae110d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="City Sports Complex">
+                        <div class="gm-mg-card-price">LKR 4,500 / hour</div>
+                    </div>
+                    <div class="gm-mg-card-content">
+                        <h3 class="gm-mg-card-title">City Sports Complex</h3>
+                        <div class="gm-mg-card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Sports Street, Colombo</span>
+                        </div>
+                        <div class="gm-mg-card-facilities">
+                            <span class="gm-mg-facility-tag">Floodlights</span>
+                            <span class="gm-mg-facility-tag">Changing rooms</span>
+                            <span class="gm-mg-facility-tag">Seating</span>
+                            <span class="gm-mg-facility-tag">Scoreboard</span>
+                        </div>
+                        <div class="gm-mg-card-actions">
+                            <button class="gm-mg-action-btn gm-mg-edit-btn" data-form="updateForm">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="gm-mg-action-btn gm-mg-delete-btn">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ground 2 -->
+                <div class="gm-mg-ground-card">
+                    <div class="gm-mg-card-img">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Green Field Arena">
+                        <div class="gm-mg-card-price">LKR 3,200 / hour</div>
+                    </div>
+                    <div class="gm-mg-card-content">
+                        <h3 class="gm-mg-card-title">Green Field Arena</h3>
+                        <div class="gm-mg-card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>456 Park Avenue, Kandy</span>
+                        </div>
+                        <div class="gm-mg-card-facilities">
+                            <span class="gm-mg-facility-tag">Grass surface</span>
+                            <span class="gm-mg-facility-tag">Parking</span>
+                            <span class="gm-mg-facility-tag">Refreshment stand</span>
+                        </div>
+                        <div class="gm-mg-card-actions">
+                            <button class="gm-mg-action-btn gm-mg-edit-btn" data-form="updateForm">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="gm-mg-action-btn gm-mg-delete-btn">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ground 3 -->
+                <div class="gm-mg-ground-card">
+                    <div class="gm-mg-card-img">
+                        <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ocean View Ground">
+                        <div class="gm-mg-card-price">LKR 5,800 / hour</div>
+                    </div>
+                    <div class="gm-mg-card-content">
+                        <h3 class="gm-mg-card-title">Ocean View Ground</h3>
+                        <div class="gm-mg-card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>789 Beach Road, Galle</span>
+                        </div>
+                        <div class="gm-mg-card-facilities">
+                            <span class="gm-mg-facility-tag">Ocean view</span>
+                            <span class="gm-mg-facility-tag">VIP seating</span>
+                            <span class="gm-mg-facility-tag">Lighting</span>
+                            <span class="gm-mg-facility-tag">Sound system</span>
+                        </div>
+                        <div class="gm-mg-card-actions">
+                            <button class="gm-mg-action-btn gm-mg-edit-btn" data-form="updateForm">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="gm-mg-action-btn gm-mg-delete-btn">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple JavaScript to toggle form visibility (as per your request, no complex functionality)
+        document.addEventListener('DOMContentLoaded', function() {
+            const showAddFormBtn = document.getElementById('showAddForm');
+            const addForm = document.getElementById('addForm');
+            const updateForm = document.getElementById('updateForm');
+            const cancelAddBtn = document.getElementById('cancelAdd');
+            const cancelUpdateBtn = document.getElementById('cancelUpdate');
+            const editButtons = document.querySelectorAll('.gm-mg-edit-btn');
+            
+            showAddFormBtn.addEventListener('click', function() {
+                addForm.style.display = 'block';
+                updateForm.style.display = 'none';
+            });
+            
+            cancelAddBtn.addEventListener('click', function() {
+                addForm.style.display = 'none';
+            });
+            
+            cancelUpdateBtn.addEventListener('click', function() {
+                updateForm.style.display = 'none';
+            });
+            
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    updateForm.style.display = 'block';
+                    addForm.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

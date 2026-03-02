@@ -1,0 +1,54 @@
+/* OPM Payment Gateway */
+.o-pg-body { display: flex; min-height: 100vh; background: #0a1929; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+.o-pg-main-content { flex: 1; padding: 2rem; margin-left: 250px; overflow-y: auto; }
+.o-pg-header { display: flex; align-items: center; margin-bottom: 2rem; gap: 1rem; }
+.o-pg-btn-back { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: rgba(86, 214, 204, 0.15); border: 2px solid rgba(86, 214, 204, 0.4); border-radius: 12px; color: #56d6cc; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+.o-pg-btn-back:hover { background: rgba(86, 214, 204, 0.25); transform: translateY(-2px); }
+.o-pg-title { font-size: 2.5rem; font-weight: 700; color: #56d6cc; margin: 0; }
+.o-pg-container { max-width: 800px; margin: 0 auto; background: linear-gradient(135deg, #0f2e47 0%, #122e4a 100%); border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 1px solid rgba(86, 214, 204, 0.2); overflow: hidden; }
+.o-pg-progress { display: flex; justify-content: center; align-items: center; padding: 2rem; background: linear-gradient(135deg, #00676c 0%, #004d5c 100%); position: relative; }
+.o-pg-progress::before { content: ''; position: absolute; top: 50%; left: 20%; right: 20%; height: 3px; background: rgba(255,255,255,0.3); z-index: 1; border-radius: 2px; }
+.o-pg-step { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2; background: rgba(255,255,255,0.15); padding: 1rem; border-radius: 50%; transition: all 0.3s ease; }
+.o-pg-step.active { background: rgba(86, 214, 204, 0.2); box-shadow: 0 6px 20px rgba(86, 214, 204, 0.3); transform: scale(1.05); }
+.o-pg-step-number { width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.2); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3rem; margin-bottom: 0.5rem; border: 2px solid rgba(255,255,255,0.4); }
+.o-pg-step.active .o-pg-step-number { background: #56d6cc; color: #0a1929; border-color: #56d6cc; }
+.o-pg-step-label { color: rgba(255,255,255,0.9); font-size: 0.9rem; font-weight: 600; text-align: center; }
+.o-pg-step.active .o-pg-step-label { color: #56d6cc; }
+.o-pg-content { padding: 2rem; }
+.o-pg-booking-summary { background: rgba(0,0,0,0.2); border-radius: 15px; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid rgba(86, 214, 204, 0.2); }
+.o-pg-booking-summary h3 { color: #56d6cc; margin-bottom: 1rem; font-size: 1.3rem; }
+.o-pg-booking-details { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+.o-pg-booking-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: rgba(0,0,0,0.2); border-radius: 10px; }
+.o-pg-booking-item svg { color: #56d6cc; font-size: 1.1rem; }
+.o-pg-booking-item span { color: #e0e0e0; font-weight: 500; }
+.o-pg-total { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(86, 214, 204, 0.1); border-radius: 10px; border: 2px solid rgba(86, 214, 204, 0.3); font-size: 1.2rem; font-weight: 600; color: #e0e0e0; }
+.o-pg-amount { color: #56d6cc; font-size: 1.4rem; font-weight: 700; }
+.o-pg-payment-form h3 { color: #56d6cc; margin-bottom: 1.5rem; font-size: 1.4rem; }
+.o-pg-form-group { margin-bottom: 1.5rem; }
+.o-pg-form-group label { display: block; margin-bottom: 0.5rem; color: #8fbbc1; font-weight: 500; font-size: 0.95rem; }
+.o-pg-input-wrapper { position: relative; display: flex; align-items: center; }
+.o-pg-input-icon { position: absolute; left: 1rem; color: #8fbbc1; z-index: 2; font-size: 1.1rem; }
+.o-pg-input-wrapper input { width: 100%; padding: 1rem 1rem 1rem 3rem; border: 2px solid rgba(86, 214, 204, 0.3); border-radius: 12px; font-size: 1rem; background: rgba(0,0,0,0.2); color: #e0e0e0; transition: all 0.3s ease; }
+.o-pg-input-wrapper input:focus { outline: none; border-color: #56d6cc; }
+.o-pg-input-wrapper input.error { border-color: #dc3545; }
+.o-pg-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.o-pg-error-text { color: #f44336; font-size: 0.85rem; margin-top: 0.25rem; display: block; }
+.o-pg-security { display: flex; align-items: center; gap: 0.5rem; padding: 1rem; background: rgba(40, 167, 69, 0.15); border-radius: 10px; margin-bottom: 1.5rem; color: #6cce6c; font-size: 0.9rem; border: 1px solid rgba(40, 167, 69, 0.3); }
+.o-pg-btn-pay { width: 100%; padding: 1.2rem 2rem; background: linear-gradient(135deg, #56d6cc 0%, #2a9d8f 100%); color: #0a1929; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+.o-pg-btn-pay:hover:not(:disabled) { transform: translateY(-2px); opacity: 0.95; }
+.o-pg-btn-pay:disabled { opacity: 0.6; cursor: not-allowed; }
+.o-pg-processing { text-align: center; padding: 3rem 2rem; }
+.o-pg-spinner { width: 60px; height: 60px; border: 4px solid rgba(86, 214, 204, 0.2); border-top: 4px solid #56d6cc; border-radius: 50%; animation: o-pg-spin 1s linear infinite; margin: 0 auto 2rem; }
+@keyframes o-pg-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.o-pg-processing h3 { color: #56d6cc; margin-bottom: 1rem; }
+.o-pg-processing p { color: #8fbbc1; font-size: 1rem; }
+.o-pg-success { text-align: center; padding: 3rem 2rem; }
+.o-pg-success-icon { font-size: 4rem; color: #28a745; margin-bottom: 1.5rem; }
+.o-pg-success h3 { color: #28a745; margin-bottom: 1rem; font-size: 1.8rem; }
+.o-pg-success p { color: #8fbbc1; margin-bottom: 1rem; }
+.o-pg-success-details { background: rgba(0,0,0,0.2); border-radius: 10px; padding: 1.5rem; margin-top: 2rem; text-align: left; border: 1px solid rgba(86, 214, 204, 0.2); }
+.o-pg-success-details p { margin-bottom: 0.5rem; color: #e0e0e0; }
+.o-pg-error { text-align: center; padding: 3rem 2rem; }
+.o-pg-error h2 { color: #f44336; margin-bottom: 1rem; font-size: 1.8rem; }
+.o-pg-error p { color: #8fbbc1; margin-bottom: 2rem; }
+@media (max-width: 768px) { .o-pg-main-content { margin-left: 0; padding: 1rem; } .o-pg-title { font-size: 2rem; } .o-pg-form-row { grid-template-columns: 1fr; } }

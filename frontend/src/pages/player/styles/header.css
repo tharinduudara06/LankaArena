@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+
+.nav
+{
+    width: 100%;
+    background-color: #00192cf6;
+    padding: 25px 10px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    position: fixed;
+    z-index: 2;
+}
+
+.nav ul
+{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+}
+
+.nav ul li 
+{
+    list-style: none;
+    /* border: 1px solid white; */
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav ul li p
+{
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: rgb(0, 218, 234);
+    font-family: 'poppins', sans-serif;
+}
+
+.item
+{
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: .2s;
+    font-family: 'poppins', sans-serif;
+}
+
+.item:hover
+{
+    color: #00eeff;
+    transform: scale(1.1);
+}
+
+.log, .reg
+{
+    border: 1px solid rgb(0, 255, 187);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'poppins', sans-serif;
+}
+
+.reg
+{
+    color: rgb(0, 0, 0);
+    background-color: rgb(0, 255, 183);
+    /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+    transition: .3s;
+    
+    
+}
+
+.reg:hover
+{
+    box-shadow: rgba(0, 255, 153, 0.251) 0px 14px 28px, rgba(0, 255, 153, 0.256) 0px 10px 10px;
+    margin-top: -5px;
+}
+
+.log
+{
+    color: rgb(0, 255, 204);
+    transition: .3s;
+}
+
+.log:hover
+{
+    background-color: #00eeff1e;
+}
+
+.nav ul li:nth-child(1)
+{
+    grid-column: 2/3;
+}
+
+.nav ul li:nth-child(2)
+{
+    grid-column: 5/6;
+}
+
+.nav ul li:nth-child(6)
+{
+    grid-column: 11/12;
+}
+
+.nav ul li:nth-child(5)
+{
+    grid-column: 10/11;
+}

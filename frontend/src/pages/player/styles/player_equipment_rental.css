@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.p-er-player-equipment-rental {
+  background-color: #f5f8fa;
+  color: #333;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Add these styles to your player_equipment_rental.css */
+
+.p-er-unavailable {
+  opacity: 0.7;
+  position: relative;
+}
+
+.p-er-unavailable-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.p-er-disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+.p-er-equipment-card .p-er-disabled {
+  background: #ccc !important;
+  color: #666 !important;
+}
+
+/* Optional: Add strikethrough for unavailable items */
+.p-er-unavailable .p-er-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.p-er-main-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 30px;
+}
+
+.p-er-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.p-er-page-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #003b52;
+}
+
+.p-er-search-bar {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 25px;
+  padding: 8px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 300px;
+}
+
+.p-er-search-bar input {
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.p-er-search-bar i {
+  color: #56d6cc;
+  font-size: 18px;
+}
+
+.p-er-filter-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.p-er-filter-btn {
+  background: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.p-er-filter-btn:hover, .p-er-filter-btn.p-er-active {
+  background: #56d6cc;
+  color: white;
+}
+
+.p-er-equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.p-er-equipment-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.p-er-equipment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.p-er-card-image {
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.p-er-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.p-er-equipment-card:hover .p-er-card-image img {
+  transform: scale(1.05);
+}
+
+.p-er-card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ff6b6b;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.p-er-card-content {
+  padding: 20px;
+}
+
+.p-er-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #003b52;
+}
+
+.p-er-card-desc {
+  color: #6c757d;
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.p-er-card-features {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.p-er-feature {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #6c757d;
+}
+
+.p-er-feature i {
+  color: #56d6cc;
+}
+
+.p-er-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.p-er-price {
+  font-weight: 600;
+  color: #003b52;
+  font-size: 18px;
+}
+
+.p-er-rent-btn {
+  background-color: #56d6cc;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.p-er-rent-btn:hover {
+  background: #46aca4;
+}
+
+.p-er-buy:hover
+{
+  background-color: #009163;
+}
+
+.p-er-buy {
+  
+  text-decoration: none;
+  background-color: #00b67c;
+  margin-left: 10px;
+  color: white;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 20px;
+  /* background-color: #003b52; */
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  transition: background 0.3s ease;
+}
+
+.p-er-pagination-btn.p-er-active, .p-er-pagination-btn:hover {
+  background: #56d6cc;
+  color: white;
+}
+
+@media (max-width: 992px) {
+  .p-er-player-sidebar {
+    width: 80px;
+  }
+  
+  .p-er-player-linkText span {
+    display: none;
+  }
+  
+  .p-er-main-content {
+    margin-left: 80px;
+  }
+  
+  .p-er-equipment-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .p-er-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .p-er-search-bar {
+    width: 100%;
+  }
+  
+  .p-er-equipment-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,333 @@
+/* admin_venue_oversight.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* body {
+    background-color: #0a1929;
+    color: #e0e0e0;
+    display: flex;
+    min-height: 100vh;
+} */
+
+.admin-venue-oversight
+{
+    background-color: #0a1929;
+    color: #e0e0e0;
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* Main Content Styles */
+.admin-vo-main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 30px;
+    background-color: rgb(0, 34, 50);
+}
+
+.admin-vo-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.admin-vo-page-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #56d6cc;
+}
+
+.admin-vo-header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.admin-vo-btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.admin-vo-btn-primary {
+    background-color: #00676c;
+    color: white;
+}
+
+.admin-vo-btn-primary:hover {
+    background-color: #007b82;
+    box-shadow: 0 0 15px rgba(86, 214, 204, 0.4);
+}
+
+.admin-vo-btn-secondary {
+    background-color: #1e3a5c;
+    color: #a3fff7;
+}
+
+.admin-vo-btn-secondary:hover {
+    background-color: #2a4d7a;
+    box-shadow: 0 0 15px rgba(163, 255, 247, 0.2);
+}
+
+/* Dashboard Cards */
+.admin-vo-stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.admin-vo-stat-card {
+    background-color: rgb(0, 44, 64);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease;
+}
+
+.admin-vo-stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.admin-vo-stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(86, 214, 204, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    color: #56d6cc;
+    font-size: 20px;
+}
+
+.admin-vo-stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.admin-vo-stat-label {
+    font-size: 14px;
+    color: #a3fff7;
+}
+
+/* Content Sections */
+.admin-vo-content-section {
+    background-color: rgb(0, 44, 64);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.admin-vo-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(163, 255, 247, 0.1);
+}
+
+.admin-vo-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #56d6cc;
+}
+
+.admin-vo-view-all {
+    color: #a3fff7;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.admin-vo-view-all:hover {
+    text-decoration: underline;
+}
+
+/* Tables */
+.admin-vo-data-table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.admin-vo-data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-vo-data-table th, 
+.admin-vo-data-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(163, 255, 247, 0.1);
+}
+
+.admin-vo-data-table th {
+    color: #a3fff7;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.admin-vo-data-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.admin-vo-data-table tbody tr:hover {
+    background-color: rgba(86, 214, 204, 0.08);
+}
+
+.admin-vo-data-table td {
+    color: #e0e0e0;
+}
+
+.admin-vo-status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.admin-vo-status-active {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+}
+
+.admin-vo-status-pending {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #FFC107;
+}
+
+.admin-vo-status-inactive {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #F44336;
+}
+
+.admin-vo-action-btn {
+    background: none;
+    border: none;
+    color: #56d6cc;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.admin-vo-action-btn:hover {
+    color: #a3fff7;
+    transform: scale(1.1);
+}
+
+/* Loading, Error, Empty States */
+.admin-vo-loading,
+.admin-vo-error,
+.admin-vo-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    color: #a3fff7;
+}
+
+.admin-vo-loading {
+    color: #56d6cc;
+}
+
+.admin-vo-loading svg {
+    margin-bottom: 16px;
+}
+
+.admin-vo-loading p,
+.admin-vo-error p,
+.admin-vo-empty p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.admin-vo-error {
+    color: #f44336;
+}
+
+.admin-vo-empty {
+    color: rgba(163, 255, 247, 0.6);
+}
+
+/* Charts Container */
+.admin-vo-charts-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.admin-vo-chart {
+    background: #132f4c;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.admin-vo-chart-placeholder {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    color: #a3fff7;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .admin-vo-charts-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-vo-stats-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-vo-stats-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-vo-main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .admin-vo-opm-sidebar {
+        display: none;
+    }
+}

@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --primary: #4f46e5;
+  --primary-light: #eef2ff;
+  --primary-dark: #3730a3;
+  --secondary: #10b981;
+  --accent: #f59e0b;
+  --error: #ef4444;
+  --success: #10b981;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --background: #ffffff;
+  --surface: #f9fafb;
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.reg-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 50%, #f0fdf4 100%);
+  padding: 20px;
+}
+
+.reg-container form {
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-xl);
+  background: var(--background);
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid var(--border-light);
+}
+
+.reg-main {
+  padding: 40px;
+  background: linear-gradient(135deg, var(--primary-light) 0%, #f0fdf4 100%);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+.reg-main::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(79, 70, 229, 0.1), transparent);
+  animation: shimmer 3s infinite linear;
+  z-index: 0;
+}
+
+@keyframes shimmer {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.reg-container form {
+  position: relative;
+  z-index: 1;
+}
+
+.reg_form-item {
+  margin-top: 25px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.reg_form-item input {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  padding: 0px 16px;
+  outline: none;
+  margin-top: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.reg_form-item input:focus {
+  border: 2px solid var(--primary);
+  background: var(--background);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Error state styling */
+.reg_form-item input.error {
+  border: 2px solid var(--error);
+  background-color: rgba(239, 68, 68, 0.05);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.reg_form-item input.error:focus {
+  border: 2px solid var(--error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Success state styling */
+.reg_form-item input:not(.error):valid {
+  border: 2px solid var(--success);
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.reg_form-item label {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Error message styling */
+.error-message {
+  display: block;
+  color: var(--error);
+  font-size: 0.85rem;
+  margin-top: 6px;
+  padding: 6px 10px;
+  background-color: rgba(239, 68, 68, 0.05);
+  border-radius: 6px;
+  border-left: 3px solid var(--error);
+  animation: slideIn 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reg_form-item button {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  margin-top: 30px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.reg_form-item button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.reg_form-item button:hover:not(.disabled) {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+}
+
+.reg_form-item button:hover:not(.disabled)::before {
+  left: 100%;
+}
+
+.reg_form-item button:active:not(.disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Disabled button styling */
+.reg_form-item button.disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: var(--shadow);
+}
+
+.reg_form-item button.disabled:hover {
+  transform: none;
+  box-shadow: var(--shadow);
+}
+
+/* Password strength indicator */
+.password-strength {
+  margin-top: 8px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--border);
+  overflow: hidden;
+}
+
+.strength-bar {
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.strength-weak { background-color: var(--error); width: 33%; }
+.strength-medium { background-color: var(--accent); width: 66%; }
+.strength-strong { background-color: var(--success); width: 100%; }
+
+/* Form header styling */
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.form-header p {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .reg-container {
+    padding: 15px;
+  }
+  
+  .reg-main {
+    width: 95%;
+    max-width: none;
+    margin: 20px 0;
+    padding: 30px 20px;
+  }
+  
+  .reg-container form {
+    padding: 30px 20px;
+    max-width: none;
+  }
+  
+  .reg_form-item input {
+    height: 48px;
+    font-size: 0.95rem;
+  }
+  
+  .reg_form-item button {
+    height: 48px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reg-main {
+    padding: 25px 15px;
+  }
+  
+  .reg-container form {
+    padding: 25px 15px;
+  }
+  
+  .reg_form-item {
+    margin-top: 20px;
+  }
+  
+  .reg_form-item input {
+    height: 44px;
+    font-size: 0.9rem;
+  }
+  
+  .reg_form-item button {
+    height: 44px;
+    font-size: 0.95rem;
+    margin-top: 25px;
+  }
+  
+  .error-message {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+}
+
+/* Focus states for accessibility */
+.reg_form-item input:focus-visible,
+.reg_form-item button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Toast container customization */
+.Toastify__toast-container {
+  z-index: 9999;
+}
+
+.Toastify__toast {
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.Toastify__toast--error {
+  background: linear-gradient(135deg, var(--error), #dc2626);
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(135deg, var(--success), #059669);
+}
+
+/* Additional decorative elements */
+.reg-main::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}

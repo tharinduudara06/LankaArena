@@ -1,0 +1,183 @@
+*
+{
+  font-family: 'poppins',sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.gm-mg-container
+{
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  padding: 10px;
+  height: 100vh;
+  background-color: rgb(248, 253, 255);
+}
+
+.gm-mg-header
+{
+  display: grid;
+  /* background-color: red; */
+  grid-template-columns: repeat(12,1fr);
+  padding: 10px 10px 20px 10px;
+  border-bottom: 1px solid lightgray;
+}
+
+.gm-mg-header-text
+{
+  grid-column: 1/6;
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(0, 56, 56);
+}
+
+.gm-mg-addGround-btn
+{
+  grid-column: 10/-1;
+  display: flex;
+  justify-content: right;
+  /* background-color: red; */
+}
+
+.gm-mg-addGround-link
+{
+  padding: 10px;
+  text-decoration: none;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: rgb(0, 191, 165);
+  color: white;
+  transition: .2s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.gm-mg-addGround-link:hover
+{
+    background-color: rgb(0, 214, 186);
+    box-shadow: rgba(0, 194, 201, 0.384) 0px 6px 12px -2px, rgba(0, 148, 133, 0.416) 0px 3px 7px -3px;
+}
+
+.gm-mg-grounds-container
+{
+  padding: 10px;
+  /* background-color: blue; */
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 20px;
+}
+
+.gm-mg-ground
+{
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(50, 50, 93, 0.174) 0px 13px 27px -5px, rgba(0, 0, 0, 0.163) 0px 8px 16px -8px;
+}
+
+.gm-mg-ground-img
+{
+  width: 100%;
+  height: 250px;
+}
+
+.gm-mg-ground-img img
+{
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.gm-mg-ground-text
+{
+  padding: 10px;
+}
+
+.gm-mg-ground-name
+{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(0, 51, 42);
+}
+
+.gm-mg-marker
+{
+  font-size: .8rem;
+  color: rgb(117, 117, 117);
+
+}
+
+.gm-mg-marker-icon
+{
+  margin-right: 5px;
+}
+
+.gm-mg-ground
+{
+  line-height: 1.9;
+}
+
+.gm-mg-ground-facilities p
+{
+  font-size: 0.9rem;
+}
+
+.gm-mg-ground-price
+{
+
+  font-size: .7rem;
+  font-weight: bold;
+  color: rgb(0, 66, 34);
+  padding-left: 10px;
+}
+
+.gm-mg-ground-facilities
+{
+  display: flex;
+
+}
+
+.gm-mg-ground-facilities p
+{
+  margin: 5px;
+  /* border: 1px solid black; */
+  padding: 5px 10px;
+  background-color: rgba(0, 171, 100, 0.127);
+  color: rgb(0, 69, 83);
+  border-radius: 50px;
+  font-size: .6rem;
+}
+
+.gm-mg-ground-edit
+{
+  background-color: rgb(0, 135, 198);
+  padding: 5px 20px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+}
+
+.gm-mg-ground-delete
+{
+  float: right;
+  background-color: rgb(216, 36, 0);
+  padding: 5px 20px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+}
+
+.gm-mg-ground-delete:hover
+{
+  background-color: rgb(240, 40, 0);
+}
+.gm-mg-ground-edit:hover
+{
+  background-color: rgb(0, 160, 234);
+}
