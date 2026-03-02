@@ -71,4 +71,12 @@ The application helps manage sports grounds, bookings, training sessions, and us
 - Approve or cancel reservations
 - Monitor usage
 
+## 👨‍💻 Project Contributors
+
+| Student ID   | Name              | Contribution Area                          |
+| ------------ | ----------------- | ------------------------------------------- |
+| IT23751514   | Herath.H.M.P.P    | Admin module (user management, approvals, reports, settings) |
+| IT23599222   | Wijethunga.A.T.U  | Coach module (training sessions, players, ground reservations) |
+| IT23628168   | Alahakoon.A.M.I.B | Operation Manager module (service operator, below admin) |
+
 
